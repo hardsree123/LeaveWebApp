@@ -249,11 +249,15 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\style-responsive.css" />
     <Content Include="Content\style.css" />
+    <Content Include="EmailTemplate\LeaveApplication.html" />
+    <Content Include="EmailTemplate\LeaveApproval.html" />
+    <Content Include="EmailTemplate\LeaveConfirmed.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -282,6 +286,7 @@
     </Compile>
     <Compile Include="Models\Common.cs" />
     <Compile Include="Models\Helper.cs" />
+    <Compile Include="Models\LeaveHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -300,6 +305,9 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Home\Manager.cshtml" />
+    <Content Include="Views\Home\Approval.cshtml" />
+    <Content Include="Views\Home\Reject.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
