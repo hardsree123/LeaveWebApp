@@ -1,0 +1,78 @@
+﻿@using System.Web.Optimization
+@model IEnumerable<SR.LMGM.Models.LeaveHelper>
+
+@{
+    ViewBag.Title = "HR Manager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            Req code
+        </th>
+        <th>
+            Emp name
+        </th>
+        <th>
+            Emp code
+        </th>
+        <th>
+            Team name
+        </th>
+        <th>
+            Leave type
+        </th>
+        <th>
+            From
+        </th>
+        <th>
+            To
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.reqId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.empname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.empcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.teamname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.leavecategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.from)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.to)
+        </td>
+
+        @if (!item.status.Equals("approvedbyhr") && !item.status.Equals("approvedbyhr"))
+        {
+            <td>
+                @Html.ActionLink("Approve", "Approve", new { id = item.reqId })|
+                <a href="#" class="rejLeave" data-toggle="modal" data-target="#myModal" data-id="@item.reqId">Reject</a>
+            </td>
+        }
+        else
+        {
+            <td>
+                Approved
+            </td>
+        }
+    </tr>
+    }
+
+</table>

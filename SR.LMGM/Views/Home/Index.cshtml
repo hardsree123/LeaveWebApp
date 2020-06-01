@@ -1,0 +1,105 @@
+﻿@using System.Web.Optimization
+@model IEnumerable<SR.LMGM.DbModel.Leaverecords>
+
+@{
+    ViewBag.Title = "Manager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+@Html.ActionLink("Create", "Create","Home" ,null, new { @class = "btn btn-primary" })
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Reqid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reason)
+        </th>
+        <th>
+            Leave type
+        </th>
+        <th>
+            Assigned to
+        </th>
+        <th>
+            Current status
+        </th>
+        <th>
+            Last approver
+        </th>
+        <th>
+            Last approved on
+        </th>
+        <th>
+            Reason for rejection
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reqid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reason)
+        </td>
+        <td>
+            @if (item.Leavetype.Equals(200001))
+            {
+                <p>Sick</p>
+            }
+            else if (item.Leavetype.Equals(200002))
+            {
+                <p>Casual</p>
+            }
+            else
+            {
+                <p>Earn</p>
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assignedto)
+        </td>
+        <td>
+            @if (item.Status.Equals(300001))
+            {
+                <span style="color:orangered" data-toggle="tooltip" data-placement="top" title="Pending">Pending</span>
+            }
+            else if (item.Status.Equals(300002))
+            {
+                <span style="color:green" data-toggle="tooltip" data-placement="top" title="Approved">Approved by manager</span>
+
+            }
+            else if (item.Status.Equals(300004))
+            {
+                <span style="color:green" data-toggle="tooltip" data-placement="top" title="Approved">Approved by hr</span>
+
+            }
+            else if (item.Status.Equals(300003) || item.Status.Equals(300005))
+            {
+                <span style="color:red" data-toggle="tooltip" data-placement="top" title="Cancelled">Rejected</span>
+            }
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lastapprover)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lastapprovaltime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rejectiondesc)
+        </td>
+
+    </tr>
+    }
+
+</table>
