@@ -1,0 +1,49 @@
+﻿@model SR.LMGM.DbModel.Users
+@{
+    Layout = null;
+}
+@using System.Web.Optimization
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="iSeeker Admin template">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <title>MyLeave</title>
+    <title>Login</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body class="login-img3-body">
+
+    <div class="container">
+        <form class="login-form" action="/Users/Login" method="post">
+            <div class="login-wrap">
+                <p class="login-img"><i class="icon_lock_alt"></i></p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon_profile"></i></span>
+                    @Html.TextBoxFor(m => m.Username, "Username", new {placeholder = "Username", @class = "form-control"})
+                    @Html.ValidationSummary(true, null, new { @style = "list-style:none; float:left;" })
+                    @*<input asp-for="Username" type="text" class="form-control" placeholder="Username" autofocus>*@
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+                    @Html.PasswordFor(m => m.Password, new { @id = "Password", @class = "form-control", @maxlength = "10", placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                    @*<input asp-for="Password" type="password" class="form-control" placeholder="Password">*@
+                </div>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                @*<button class="btn btn-info btn-lg btn-block" type="submit">Signup</button>*@
+            </div>
+        </form>
+        <div class="text-right">
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
