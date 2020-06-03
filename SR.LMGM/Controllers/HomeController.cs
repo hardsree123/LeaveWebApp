@@ -105,7 +105,7 @@ namespace SR.LMGM.Controllers
                     lv.Rejectiondesc = rejectData.rejectDesc;
                     db.Leaverecords.Update(lv);
                     db.SaveChanges();
-                    Helper.SendRejectMail(id, 100004, user);
+                    Helper.SendRejectMail(lv, 100004, user);
                 }
                 else if (user.Designation.Equals(100003))//rejected by hr
                 {
@@ -114,7 +114,7 @@ namespace SR.LMGM.Controllers
                     lv.Rejectiondesc = rejectData.rejectDesc;
                     db.Leaverecords.Update(lv);
                     db.SaveChanges();
-                    Helper.SendRejectMail(id, 100003, user);
+                    Helper.SendRejectMail(lv, 100003, user);
                 }
                 return RedirectToAction("Index", "Home");
             }
@@ -140,13 +140,14 @@ namespace SR.LMGM.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Leaverecords leave)
+        public async Task<ActionResult> Create(Leaverecords leave, HttpPostedFileBase filename)
         {
             if (ModelState.IsValid)
             {
                 leave.Status = 300001;//default due status is inserted
                 Users user = (Users)HttpContext.Session[SessionName];
                 leave.Assignedto = user.Managedby;// submission directs to the manager.
+                leave.Attachmentpath = Helper.SaveUploadedFile(filename);
                 db.Add(leave);
                 await db.SaveChangesAsync();
                 Helper.SendLeaveApplicationMail(LeaveProvider.GetMailAddress(user.Managedby), user, "Leave application",leave.Reqid);

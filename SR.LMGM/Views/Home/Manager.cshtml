@@ -60,12 +60,18 @@
         </td>
 
 
-        @if (!item.status.Equals("approved") && !item.status.Equals("approvedbyhr"))
+        @if (item.status.Equals("pending"))
         {
             <td>
                 @Html.ActionLink("Approve", "Approve", new { id = item.reqId })|
                 @*@Html.ActionLink("Reject", "Reject", new { id = item.reqId })*@
                 <a href="#" class="rejLeave" data-toggle="modal" data-target="#myModal" data-id="@item.reqId">Reject</a>
+            </td>
+        }
+        else if (item.status.Equals("cancel") || item.status.Equals("rejectedbyhr"))
+        {
+            <td>
+                Rejected
             </td>
         }
         else

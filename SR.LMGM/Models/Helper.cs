@@ -127,8 +127,45 @@ namespace SR.LMGM.Models
             return des;
         }
 
-        internal static void SendRejectMail(string id, int v, Users user)
+        internal static void SendRejectMail(Leaverecords record, int v, Users user)
         {
+            string rejectingUser = user.Empname;
+            string rejLeaveAppln = LeaveProvider.GetEmpName(record.Empcode);
+            string body = PopulateEmpRespForReject(rejectingUser, rejLeaveAppln, record.Reqid);
+            SendEmail(LeaveProvider.GetEmpemail(record.Empcode), body, "Leave rejected " + record.Reqid);
+        }
+
+        private static string PopulateEmpRespForReject(string rejectingUser, string rejLeaveAppln, string reqid)
+        {
+            string body = string.Empty;
+            body += "Hi " + rejLeaveAppln + ", <br />";
+            body += "Your request (" + reqid + ") has been rejected by " + rejectingUser + "<br />";
+            return body;
+        }
+
+        /// <summary>
+        /// file upload function
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        internal static string SaveUploadedFile(HttpPostedFileBase file)
+        {
+            string _path = "";
+            try
+            {
+
+                if(file.ContentLength > 0)
+                {
+                    string _fileName = Path.GetFileName(file.FileName);
+                    _path = Path.Combine(HttpContext.Current.Server.MapPath("~/UploadedFiles"), _fileName);
+                    file.SaveAs(_path);
+                }
+                return _path;
+            }
+            catch(Exception ex)
+            {
+                return _path;
+            }
         }
 
         #endregion Encrypt

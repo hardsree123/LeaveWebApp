@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace SR.LMGM.DbModel
 {
@@ -24,5 +25,6 @@ namespace SR.LMGM.DbModel
         [DataType(DataType.MultilineText)]
         public string Rejectiondesc { get; set; }
         public string Attachmentpath { get; set; }
+
     }
 }
