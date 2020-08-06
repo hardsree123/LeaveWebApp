@@ -105,7 +105,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'sreejith','sreejith','SE-1000','sreejith kumar','9747359124','hardsree123@gmail.com',100005,'PM-1000','MHK'),(2,'Basheer','Basheer','SE-1001','Basheer','9747359111','hardsree123@gmail.com',100005,'PM-1000','MHK'),(3,'Preetha','Preetha','PM-1000','Preetha','9747359111','kumar.sreejith.m@gmail.com',100004,NULL,'MHK'),(4,'Vishnu','Vishnu','HR-1000','Vishnu','9747359111','kumar.sreejith.m@gmail.com',100003,NULL,'MHK');
+INSERT INTO `users` VALUES (1,'sreejith','sreejith','SE-1000','sreejith kumar','9747359124','a@a.com',100005,'PM-1000','MHK'),(2,'Basheer','Basheer','SE-1001','Basheer','9747359111','12s@sq.com',100005,'PM-1000','MHK'),(3,'Preetha','Preetha','PM-1000','Preetha','9747359111','ka@a.com',100004,NULL,'MHK'),(4,'Vishnu','Vishnu','HR-1000','Vishnu','9747359111','a@a.com',100003,NULL,'MHK');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
